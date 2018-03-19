@@ -1,0 +1,9 @@
+django==2.0.3
+Markdown==2.6.11
+bootstrap-admin==0.3.9 
+pytz==2018.3
+
+
+
+
+
