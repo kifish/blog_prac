@@ -18,10 +18,17 @@ from article import views
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from article.views import RSSFeed
+
 #django 2.0+
 urlpatterns = [
     url(r'^admin/',admin.site.urls),
     url(r'^$',views.home,name = 'home'),
-    url(r'^(?P<my_args>\d+)',views.detail,name = 'detail'),
-    url(r'^test/$',views.test)
+    url(r'^(?P<id>\d+)/$',views.detail,name = 'detail'),
+    url(r'^test/$',views.test),
+    url(r'^archives/$',views.archives,name = 'archives'),
+    url(r'^aboutme/$',views.about_me,name = 'about_me'),
+    url(r'^tag(?P<tag>\w+)/$',views.search_tag,name = 'search_tag'),
+    url(r'^search/$',views.blog_search,name = 'search'),
+    url(r'^feed/$',RSSFeed(),name = "RSS")#新添加的urlconf，并将name设置为RSS，方便在模板中使用url
 ]
